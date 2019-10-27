@@ -6,7 +6,7 @@
 
 2. [Natural Language Process](src/nlp.md)
 
-3. [Computer Vision](src/cv.nlp)
+3. [Computer Vision](src/cv.md)
 
 4. [Multimodal Learning](src/mml.md)
 
