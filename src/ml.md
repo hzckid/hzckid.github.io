@@ -71,7 +71,7 @@ The means of inner product of x and y is that vector x projection in vector y.
 
 2. kernel trick
 why need kernel trick? Some case we need to mapping data to high dimenstion, it should find some distance measure, such as the inner product, however calucation the inner product in high dimension is complex, thus is there existing some approch could do it in simple way? The answer is Kernel Function.  
-![kernel](img/kernel.png)  
+![kernel](https://github.com/hzckid/hzckid.github.io/blob/master/img/kernel.png)  
 As above mentioned, the essence of Kernel Function is inner(dot) product of high dimension, the Kernel function K(v1,v2) represent as mapping two vector v1 and v2 in the origin vector to high dimension space, then calculating the dot product. The mapping rule $P(x,y)=(x^2,\sqrt[2]{2}xy,y)$ will map two dimension data into three dimension data. As for the Kernel function:
 $$
 K(x,z) = exp(-\frac{\|x-z\|^2}{2\sigma^2})
