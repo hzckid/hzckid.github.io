@@ -1,0 +1,55 @@
+# Machine Learing
+## 什么是参数估计和非参数估计？
+* parameter estimate: 先假定研究的问题具有某种数学模型，如normal distribution, binominal distribution, 再用已知类别的学习样本估计里面的参数。
+* unparameter estimate: 不假定数学模型，直接用已知类别的学习样本的先验知识直接估计数学模型。
+
+* l1-norm (lasso regularizer) and l2-norm (ridge regulrizer) are able to reducing overfitting, but the bonus of l1-norm will get more sparse representation solver, i.e. l1-norm have less non-zero factor.
+
+
+# Ensemble learning
+* Base theory: PAC(probably approximately correct):概率近似正确  
+* Ensemble learning is care about Bias-Variance balance, what it is a perpetual topic in machine learning. The ensemble learning try to reduce one without adding another, even reduce both together, while the cost is ensemble.
+
+1. Bagging (abbr. of Boostrap aggregating)  
+Train multiepoch, re-sample as the input, the final result dicision with vote.
+
+2. Boosting  
+Popular method is AdaBoost (Adaptive Boosting); Initial each classifier with equal weight, afterwards training with t epoch, then offer the error training instance with higer weight, which make the algorithm concentrate on the failure sample, and vise versa. The final result produce with voting.
+
+3. Stacking  
+Proposed by Wolpert in paper "Stacked Generalization"
+The stacking could considering as the generalize of Aggregation in ensemble. Replacing the voting or averaging in bagging and boosting to decresing the bias and variance.Such as the voting could replace by KNN, softmax (logistic regression) instead weight voting and linear regressiong for averaging.
+
+
+3. Cascading  
+
+
+3. NFL  
+proposed by David H. Wolpert.
+假设在整个函数空间中所有可能的目标函数f是均匀分布的（也就是说现实中的真实的问题是均匀出现的（因此这个就是我开头所说的前提！！！）
+
+
+4. CrossValidation(abbr. as CV)
+Proposed by Seymour Geisser, the CV known as *Rotation Estimation* a pratical approach to cutting the dataset into subset in statistic.
+When training data, leave one subset as testing data, the others as traing data, until every subset had test and only once time.  Then add predict error of each sample as the PRESS (predicted error sum of squares).
+
+3. difference between bagging and boosting:
+data of bagging generate from re-sample, while bootstraping sample with error rate, thus the classify of bootstrap is better than bagging.
+
+4. compositional algorithem based on bagging and boosting:  
+Bagging  + DecisionTree = Random Forest  
+AdaBoost + DecisionTree = Boosting Tree (the base classifier is CART) 
+Gradient + DecisionTree = GBDT(gradient boosting decision tree) (generally used in regression, XGBoost is engineer work of GBDT)
+
+5. DecisionTree  
+* ID3  使用信息增益熵
+* C4.5 C4.5算法不直接用信息增益，而是使用信息增益率来选择最优划分
+* CART CART使用基尼指数来选择划分
+
+非参数估计方法 Mente Carlo Estimation,Bootstrap是Mente Carlo的基础上提出来的，其实质是对观测信息进行再抽样，进而对总体的分布特性进行统计推断。
+Re-sample 在抽样,有放回的抽样，从旧的样本中抽取一定数据量的新样本。
+
+what is bootstraping? It is come from 'pull up by your ownbootstraps', means rely on your resource, utilize the re-sample trick.
+
+diff of ML and PR?
+
