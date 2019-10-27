@@ -51,5 +51,43 @@ Re-sample 在抽样,有放回的抽样，从旧的样本中抽取一定数据量
 
 what is bootstraping? It is come from 'pull up by your ownbootstraps', means rely on your resource, utilize the re-sample trick.
 
-diff of ML and PR?
+## tmp
+* diff of ML and PR?
+
+1. Data classify with structure whether having neat structure or not?  
+* Euclidean Structure Data   
+* Non-Euclidean Structure Data: Graph or Manifold.
+
+2. dimension reduction algrithm  
+* PCA (pricinple componet analysis)
+* LDA (Linear Discriminant Analysis)
+* LLE (local linear embedding)
+* Laplacian Eigenmaps (local aspect)
+
+## SVM (support vector machine)
+1. what is the representation of inner product?  
+x=(x1,x2,x3),y=(y1,y2,y3)  x*y=x1*y1+x2*y2+x3*y3  
+The means of inner product of x and y is that vector x projection in vector y.
+
+2. kernel trick
+why need kernel trick? Some case we need to mapping data to high dimenstion, it should find some distance measure, such as the inner product, however calucation the inner product in high dimension is complex, thus is there existing some approch could do it in simple way? The answer is Kernel Function.  
+![kernel](img/kernel.png)  
+As above mentioned, the essence of Kernel Function is inner(dot) product of high dimension, the Kernel function K(v1,v2) represent as mapping two vector v1 and v2 in the origin vector to high dimension space, then calculating the dot product. The mapping rule $P(x,y)=(x^2,\sqrt[2]{2}xy,y)$ will map two dimension data into three dimension data. As for the Kernel function:
+$$
+K(x,z) = exp(-\frac{\|x-z\|^2}{2\sigma^2})
+$$
+In this fucntion, if x is similar to z ( $\|x-z\|\approx0$ ),  the kernel value would be 1, while if x is vary widely with z ($\|x-z\|\gg0$), then the kernel function is approximately equal to 0. Because this function is similar to Gaussian distribution, it also konw as Gaussian Kernel Function or RBF (Radial Basis Funtion), it could map the origin feature to infinite dimension.
+* RBF rely on the dot distance, i.e.,  $\phi(x,y)=\phi(\|x-y\|)$. Any function $\phi$ satisfy this condition would be the RBF, generally speaking the distance is euclidean, it could be other distance as well. The other two common kernel function is Exponential kernel 
+  $$
+  k(x,z)=exp(-\frac{\|x-z\|}{2\sigma^2})
+  $$
+  and Laplacian kernel
+  $$
+  k(x,z)=exp(-\frac{\|x-z\|}{\sigma})
+  $$
+  
+
+
+
+
 
