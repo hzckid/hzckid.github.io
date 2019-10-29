@@ -362,9 +362,7 @@ previous research ignore the important role of answer.
 
 ## 4.4 **Domestic Research**  
 
-1. paper 《Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering》[[19]](#19) NIPS 2015, by Baidu Research.
-
-mQA model. Muanual valide the answer.
+1. paper 《Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering》[[19]](#19) NIPS 2015, by Baidu Research. mQA model. Muanual valide the answer.
 
 2. paper 《Deep Modular Co-Attention Networks for Visual Question Answering》[[21]](#21) CVPR 2019, by HDU, winner of VQA Challenge 2019.
 
