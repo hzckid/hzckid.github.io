@@ -26,7 +26,7 @@ The stacking could considering as the generalize of Aggregation in ensemble. Rep
 
 3. NFL  
 proposed by David H. Wolpert.
-假设在整个函数空间中所有可能的目标函数f是均匀分布的（也就是说现实中的真实的问题是均匀出现的（因此这个就是我开头所说的前提！！！）
+假设在整个函数空间中所有可能的目标函数f是均匀分布的(也就是说现实中的真实的问题是均匀出现的)
 
 
 4. CrossValidation(abbr. as CV)
@@ -71,7 +71,9 @@ The means of inner product of x and y is that vector x projection in vector y.
 
 2. kernel trick
 why need kernel trick? Some case we need to mapping data to high dimenstion, it should find some distance measure, such as the inner product, however calucation the inner product in high dimension is complex, thus is there existing some approch could do it in simple way? The answer is Kernel Function.  
+
 ![kernel](https://github.com/hzckid/hzckid.github.io/blob/master/img/kernel.png)  
+
 As above mentioned, the essence of Kernel Function is inner(dot) product of high dimension, the Kernel function K(v1,v2) represent as mapping two vector v1 and v2 in the origin vector to high dimension space, then calculating the dot product. The mapping rule $P(x,y)=(x^2,\sqrt[2]{2}xy,y)$ will map two dimension data into three dimension data. As for the Kernel function:
 $$
 K(x,z) = exp(-\frac{\|x-z\|^2}{2\sigma^2})
