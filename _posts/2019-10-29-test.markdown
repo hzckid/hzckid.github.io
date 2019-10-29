@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: False
-title: ""
-excerpt: ""
+title: "Test Post"
+excerpt: "Test Post menu"
 date:   2019-10-29 20:10:49
 mathjax: true
 ---
