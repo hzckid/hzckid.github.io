@@ -1,1 +1,18 @@
-theme: jekyll-theme-cayman
+# Site settings
+title: Peter blog
+email: 
+description: "Knowing & Doing."
+baseurl: ""
+url: "http://hzckid.github.io"
+twitter_username: peter 
+github_username:  peter
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
