@@ -1,0 +1,428 @@
+---
+layout: post
+comments: False
+title: "VQA Survey"
+excerpt: "VQA"
+date:   2019-10-29 22:59:13
+mathjax: true
+---
+
+# chapter 1 what is VQA? 
+
+## 1 what is VQA?  
+VQA is abbreviate of Visual question answering, which given a picture and realtive questions, the VQA system will get an answer under these conditions. VQA is a reasearch field of Visual Understanding.  
+
+## 2 What is the solution to VQA?  
+The vqa is a multimodal learning problem[[41]](#41). it can considerate as classification task, as the following image showing [[42]](#42), which the input is image and relative question, the output is answer. While extracting the image and question features, the vital in vqa is how to map them to a common feature space. The emparical method is using joint embedding, utilize the concatenate or element-wise product to joint image feature and question feature to same feature space.
+
+<div class="imgcap">
+<img src="/assets/vqa/vqaFramework.png">
+</div>
+
+### 2.1 Who first solve VQA?
+Malinovwski[[6]](#6), who comes from the Max-Planck Institute for Informations in German, firstly proposed a bayesian model to solve the vqa problem, combined symbolic reasoning and uncertain visual information. He was inspiring by semantic parsing work [[40]](#40), which learn to transform text into semantic tree, then get the final functional programing language, it will get output as answers. After that they proposed a cnn-lstm model for vqa in ICCV2015[[49]](#49).
+
+### 2.2 Multimodal Learning
+Since the challenge of vqa is that it is the multimodal problem[[41]](#41), combining the feature of vision and question, then reasonning the answer. The multimodel problem have different sub-research fields, such as the image captioning, visual question answering and so on. It have a widely application, especially in scene understanding, which one of the key technique in autopilot(from MIT class: Deep learning for self-driving cars).   
+
+### 2.3 Image Captioning
+After paper[[6]](#6) proposed the senmantic parsing method to solve the vqa question, a lot of researcher learn the performance from Neural Image Caption (NIU), because both of them belong to multimodal learning.  
+
+1. How the image captioning work?
+The general approach to image captioning is the CNN-RNN model. It input a pre-trained CNN feature of image, then sent these feature to RNN model to claasify into a candidate answers or generate relative description of this image.
+
+2. some promising captioning work before vqa:
+
+	2.1 baby talk [[15]](#15)
+
+	generate the image captioning with constructed CRF based on the image candidate object and relative attribute.
+
+	2.2 show and tell [[14]](#14)
+
+	first extracted a high level iamge feature with GoogleNet and then feed it to LSTM model to generate the image captioning.
+
+
+## 3 What is VQA Datasets?  
+The VQA Datasets is build by the virginia Tech and Georgia Tech based on the mscoco datasets. Host by Devi Parikh, who CTO of FAIR and win the *Computer and Thought Award*, knowed as Fields Prize of AI.  
+the coco(Common Objects in COntext) dataset is builded by microsoft, which privide for image recognition. The coco image collect from Flickr, which a web sharing picture and vedio. coco search 80 categories of object with different scene in Flickr. Then divide into three parts: train sets, valuation set and test set.   
+the VQA-v1 include three type question: yes/no, number and other. However v1 is unbalanced, example as for the yes/no question, it can get a high performance answering with yes. So this v1 dataset exists some prior, make it unbalance.  
+In order to alleviate the unbalance problem, they public the VQA-v2 dataset, which two scales to v1. The size of v2 reach 650k question and answering pair, involve 120k different images. The most important is that the v2 dataset settle the unbalance problem with yes/no question devide half-and-half. Besides, the v2 ansure that for different image there will exist various answers for the same question.
+
+### 3.1 How the COCO data build?  
+the coco datasets build with the Amazon Mechanical Turk (abbr., AMT), it is a crowd-sourced progress, the work of AMT named as turker. They are freelance worker. However their work also comes free, which the crowded work public from all over the world, so its time is flexiable, it may public before dawn and end quickly.
+
+
+### 3.2 What in COCO data?
+download with two type file, one is images file which contain the Image infomation, the other contain is Annotations file, which contain the label information.
+
+- The Images file contain the iamges.
+
+- The Annotations file, it contain captions, instance, person\_keypoints.
+
+	1) The instance file describle the bounding box and segmentation information. It consist of 5 keys: info, licenses, images, annotations, categories. The annotations have the bounding box information, it connect the iamges and categories with ID.
+	Specially, the annotation exist a iscrowd key, which select between 0 and 1, represent respectively the plygon(iscrowd=0) and the RLE (iscrowd=1).
+
+	2) The person\_keypoints also contain 5 keys the same with instance file. the info, licenses and images remain the same, but the annotations and categories is diff.
+
+	3) The captions file have 4 keys: info ,licenses images and annotations, the annotations consist of multiscene describe.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+# Chapter 2 Development of VQA
+
+## 2.1 The survey of VQA [[4]](#4),[[11]](#11),[[12]](#12)  
+### 2.1.1 VQA datasets  
+1. DAQUAR (DAtaset for QUestion Answering on Real-world images)[[6]](#6) the origin and minimium vqa datasets, image from NYU-DepthV2 Dataset. This dataset have poor quality, some image have low resolution, the question and answer have explicit gramma error.
+
+2. COCO-QA this dataset based on coco image, the question and answer builded by the NLP algorithm. This datasets contain training image 78736, test iamge 38948, including 69.84% target question, 16.59% color question, 7.74% counting question, 6.10% position question, all the answer is single word, which unique number is 435. because of generating question and answer by NLP, the grammar error is inevatable.
+
+3. The VQA Dataset consist of real image and abstrct synthetic image. The real image part called COCO-VQA, which image collect from COCO image. For the COCO-VQA, each image have 3 question, for each question exist 10 answers. this dataset containing 614163 image, including 248349 for training, 121512 for valid, 244302 for testing. The another part called SYNTH-VQA, including 50000 synthesic scene, having 100 object, 30 animal, 20 cartoon model. the SYNTH-VQA containing 150000 QA pare. for each image, the number of quenstion and answer is the same as COCO-VQA. However this datasets exist bias, which the dataset isn't balanc.
+
+4. FM-IQA（The Freestyle Multilingual Image Question Answering）[[19]](#19)： This dataset build by Baidu in Chinese, then translate it to english. differ from previous work, the answer of this dataset could be a sentence. Christopher said that this is impractical because of extremely demanding of expenses, and hard to messure how changing algorithm altered performance.
+
+5. Visual Genome：Image of this dataset from COCO and YFCC100M(Yahoo Flickr Creative Commons 100 Million)，containing 108249 iamge and 1700k QA pairs. Until now, this dataset is the largest dataset in this field. This dataset devide into 6W：What, Where, How, When, Who, and Why. The VG datasets have not yes/no presence question, the multiple of this dataset is better than others.
+
+6. Visual7W：This a expand version of VG datasets, including 7: What, Where, How, When, Who, Why, and Which. Including 47300 image, considerating the accuracy, it labels four possible answers with bounding box.
+
+7. SHAPES: Polygon image containing various shape, color, which question including property, relation, shape and position, involving 244 unique question and 64 image. While all the question is the yes/no question. 
+
+8. Visual Madlibs: Dataset for blank fill. [[10]](#10) 
+
+9. TDIUC (Task Driven Image Understanding Challenge) [[11]](#11), C Kanan. Devide datasets into 12 category. motivation: get rid of data bias. because the data bias would get a better performance without reasoning or understanding the image.
+
+10. CLEVR (Compositional Language and Elementary Visual Reasoning) [[18]](#18). One of the CLEVR meaning is last sentence abbreviate, another is the story Clever Hans, which a horse can 'calculate' number, however the truth is the horse Hans could not calculate number, it just have power observation, which knows what number stop is right accoding the people's facial expression.
+	Their team want to test that if the vqa model get answer with 'observation' the image instead of reasoning the image. Based on it, they proposed the CLEVR datasets to test image reasoning abilities. 
+
+11. VQA-CP (vqa changing prior) [[36]](#36) re-build the vqa dataset and make prior of train set and test set is different.   
+
+#### (a) vqa datasets comparison [[11]](#11)
+
+<div class="imgcap">
+<img src="/assets/vqa/datasets.png">
+<div class="thecap" style="text-align:center">diff datasets</div>
+</div>
+
+#### (b) "tail" of VQA datasets
+
+<div class="imgcap">
+<img src="/assets/vqa/longtail.png">
+</div>
+
+The curve of figure 5 [[4]](#4) is the answer frequeece, we can find that the Visual Geonome and Visual7W have more longer tail than the others, which long tail will provide both dataset more candidate answer for question. When processing NLP, picking up the more frequeence word as the candidate word will decreasing the model caculation.  However it will provide less candidate answer pair for unbalance dataset, for example, for yes/no answer, the totoal number is 100, and yes occupy 90 and no is 10, the answer yes will appear more than answer no. So the balance operation of data will make the frequence equal, and alliviate the long-tail. 
+
+
+
+### 2.1.2  VQA Algorithm
+
+<div class="imgcap">
+<img src="/assets/vqa/algorithm.png">
+</div>
+
+As exhibit in above picture, it show the overall view of most of the exising vqa algorithm, which is consist of following three parts:  
+1) extracting image features (image featurization)   
+	image feature extractor，which pre-trained by CNN，including VGGNet，ResNet，GoogLeNet
+
+2) extracting question features (question featurization)    
+	extract the question feature, including BOW(bag-of-words), LSTM, GRU(gated recurrent units), skip-thought vectors(sentence vectorize)
+
+3) an algorithm that combines these features to produce an answer.    
+	conbine above two feature as input, the vqa is considerate as the classification task, which the unique answer is treated as a distinct catetory.
+
+So that the differ significantly lie on how they integerate the question and image feature. As following:
+
+1. **Joint embedding approaches**  
+Combining the image and question features using simple mechanisms, e.g., concatenation, elementwise multiplication, or elementwise addition, and then giving them to a linear classifier or a neural network.
+
+2. **Biliear pooling**  
+Combining the image and question features using bilinear pooling or related schemes in a neural network framework. 
+
+
+<div class="imgcap">
+<img src="/assets/vqa/attention.png">
+</div>
+
+3. **Attention machanism**   
+	Attention is introduced by Bahdanau [[44]](#44), firstly apply in vqa by paper [[16]](#16), then other paper expand it [[45]](#45),[[46]](#46),[[47]](#47).
+	Using global feature alone may obscure task-relevant regions of the input space.
+	the more reasonable model is adaptively scales lcoal feature based on both relative importance,
+	It can realize with a  classifier that uses the question features to compute spatial attention maps for the visual features.
+	The detail is utilizing the question feature to get the attention weight, then apply it to the image feature to decide which part, in here is image gird, is more important. The attention model has prove it is a practicable approach to imporve the performance of vqa.
+
+	The attention models [[8]](#8) have shown great successes in other vision and NLP tasks, such as object recognition, captioning and machine translation.
+
+	It shows that the attention is able to leverage the performance of VQA task[[11]](#11). However, instead of applying attention on a uniform grid of image.
+
+	It is more attrative to concentrate the attention on the prominence object of the image, so using the RPN (region proposal network) to extract the object of image with bounding box, then encoding each bbox with CNN, afterwards determine the relavance of each bbox's feature using the attention weight extracted from the question feature.
+	see the detail of [Promising Model of Attention Machanism](#att)
+
+
+4. **Bayesian model**  
+Using Bayesian models that exploit the underlying relationships between question-image-answer feature distributions. paper [[7]](#7) proposed a bayesian model to calculate the occurs of question and image, which using to predict the answer type.
+
+5. **Compositional model(!!!)**  
+Using the question to break the VQA task into a series of sub-problems, then conbine them together.
+
+	5.1 Neural Module Networks[[29]](#29)
+	Motivation: they argue that vqa is a highly-multitask learning rathen than a single function to map from question and context to answer.
+	the question first send to parse, then the output of parse and the visual feature will feed to neural module network to get the answer.
+
+	5.2 Dynamic Memory Networks  
+	consist of four part, input module of image representation, question module of question representation, episodic memeory module is the memory part and the answer module to generate answer.
+	the origin DMN is in paper[[30]](#30) that in order to solving the text question answering problem, proposed by FAIR 2015. It feed the texture feature into a episodic memory module, update the module first when training then output an answer.  
+	in paper [[51]](#51) proposed DMTN(dynamic memory tensor network), imporved the DMN in the attention mechanism, modified it can learn the attention parameter itself, [reference](https://blog.csdn.net/liuchonge/article/details/78205974).
+	while DMN++r[[17]](#17) improved the input by a biGRU, attention and memory, then applying in vqa.
+
+6. **External Knowledges**  
+paper[[23]](#23),[[24]](#24) utilize the external information to get the prior of information, which is interpretable and traceable.
+
+### 2.1.3 **Evalution Metrics**  
+As we known any model performance is depend on its metrics. 
+1. simple accuracy  
+Just calculate which answer is right or not.
+
+2. WUPS  
+The most traditional metric is accuracy, however it maybe reasonable for the multi choise system, but it would be not work in open-end system.
+example, if the cat, dog and rabbit stay toggether in image, the question is what animals in this picture? does the answer with cat and dog not right?
+It is a complex problem, so the vqa utilize the WUPS to messure this situation.
+The WUPS is the metric provide in 2014, which inspiring by the WUP messure and the fuzzy set. It will estimate the senmatic distance between the predict answer and the ground truth by senmantic tree, which values lie between 0 and 1.
+
+3. Consensus Metric  
+the VQA Datasets provide 10 answer for each question, it means that exist multiply ground truth.
+If the answer match one of the ground truth set, the answer is right.
+
+4. Manual Evalution  
+yeah, manual..[[19]](#19)
+
+### 2.1.4 Application of VQA
+1. help the visual impairement people
+2. image retrieve
+3. auto pilot
+
+### 2.1.5 Future of VQA
+1. attention model
+2. bias of the datasets.
+3. how to reason
+4. Multi-choice & Open-ended
+
+--------------------------------------------------------------------------------------------------------------------------------
+# chapter 3 BigGun's Team
+
+## 3.1 [Chirstopher Kanan](https://chriskanan.com/). Christopher Kanan Team
+Kanan's paper [[11]](#11): 《**An analysis of visual question answering algorithms**》
+this paper of Christopher Kanan [[11]](#11) have four contribute:  
+**Motivation**:  
+It is hard to compare the abilities of individual algorithm, because existing datasets do not divided into meaningful categories.
+For example, color question compares to spatial reasoning question, the spatial reasoning question would not perform so feat due to the evalution metrics that are used.
+
+1. create a new datasets, called TDIUC, are question is devied into 12 different categories.
+2. proposed two new evalution metrics that compensate for forms of dataset bias.
+3. balanced the number of yes/no object presence detection question to assess whether a balanced distriution can help algorithm learn better.
+4. introduce the absurd question that force the algorithm to determine if a question is valid for a given image.
+
+Kanan's papar[[5]](#5): 《**Answer Them All! Toward Universal Visual Question Answering Models**》 
+
+The research of VQA devide into two camp, the image dataset learing the image understanding, the other is abstract image, learning the reasoning of image.
+
+
+
+## 3.2 [Devi Parikh](https://www.cc.gatech.edu/~parikh/). The vqa development of the Deri Parikh team in Virginia Tech, it can found that.
+
+1. firstly, they proposed the vqa-v1 datasets, based on the mscoco datasets [[1]](#1). 
+
+2. then they found the bias of language, which lead a prior to answer. In order to solve this problem, they use the abstract scene (the clipart picture) dataset to eliminate the strong language prior, which containing pair of complemenatry scene: the two scene have opposite answer for the same question, while the images are as similar as possible. [[2]](#2)
+
+
+3. in NIPS 2016 paper [[47]](#47) argues that the question attention should equal to image attention, so they proposed a co-attention machanism for vqa.
+
+3. Base on analysing the paper[[47]](#47) and [[code]](https://github.com/GT-Vision-Lab/VQA_LSTM_CNN), wirtten by Jiasen Lu, doctor student of Devi Parikh. In 2016 EMNLP paper [[28]](#28) developed novel techniques to characterize the behavior of VQA models. And they argue that the vqa data is:
+* 'myopic', tend to fail on sufficiently novel instance, maybe learn the bias of training data, could not generate in test data.
+* 'jump to conclusions', converge on a predicted answer after 'listening' to just half the question, have not a overall view of question feature.
+* 'stubborn', donot change their answers across images.
+
+
+4. the performance on clipart image show the advantage of balanced datasets. So they propose the vqa-v2 datasets, which balanced the answer to alliviate the language prior.  [[3]](#3)
+
+5. GVQA[[36]](#36), a compositional model.  
+Motivation: most of the vqa models are heavily driven by superficial correlations in the training data. When the model face a diffcult problem, models typically resort to latching onto the language prior in the training data while lose sight of image. e.g. reply the question "how many X" question with "2", which irrespective X, and "what color isX" with "white", "is the X" with "yes", and so on. They found that most of the vqa model get a worse performce in vqa-cp, so they propsed a GVQA (Grounded Visual Question Answering), which is a compositional model.
+
+<div class="imgcap">
+<img src="/assets/vqa/gvqa.png">
+</div>
+
+## 3.4 [Feifei Li](http://vision.stanford.edu/people.html)
+In paper[[28]](#28) D Parikh analyse the characteristic of existing vqa model, besides the Yin and Yang[[2]](#2) argue that the balance important of vqa datasets. Based on both, Feifei's team take the clever hans as metaphor, they thought that the vqa didn't understand the image and question, they rely on the statistically favorable.
+
+
+## 3.3 [Qi Wu](http://www.qi-wu.me/). Qi Wu's team work [[12]](#12)
+1. The first motivation of Qi's Team proposed that it exists the context gap between the image and language feature, both should map to sub-space as the bridge, instead of connecting each other directly. They proposed the attribute of image as the common space to bridge both. their model predicts the attribute of image(these attr is generized, such as the object name, property, motivation, adjectinve and so on.), afterwards, these attribute will replace the image feature and input the RNN model, which will generate the language description of image.
+
+2. ACK(first show in wu's survey paper) The extracted image attribute work welll in image captioning and vqa. However vqa is diff from image captioning, because vqa requires more common sence. Inspiring by it, they assume that if they can expand the attribute space by introducing other common sence knowleges. So they combine the knowledges graph to vqa, which get a high pergormance in VQA datasets.(public in CVPR2016 **Ask Me Anything: Free-form Visual Question Answering Based on Knowledge from External Sources**[[23]](#23))
+
+3. ACK-S: With the help of attribute feature and knowleges, they allieviate the gap between image and language. So if this approach can be apply on more vision-and-language problem, such as the VQA. So they did, the result shows that it gets a pretty well performance in VQA. (publish in TPAMI **Image Captioning and Visual Question Answering Based on Attributes and Their Related External Knowledge** [[24]](#24))
+
+4. After solve the problem of common sence, they found there have two limits in vqa:
+* CV doesn't help a lot: Only CNN features are used, which CNN is simply trained on object classification, ==> VQA requires multiple CV tasks
+* No reasons are given: the common method of vqa is just map the answer to iamge and question. the reasons is important but deficiency, e.g. Medical service, Defense.
+
+Based on these problem, they propsed a compositional vqa structure, called VQA Machine [[25]](#25), which can accept output of mutli cv algorithm, such as object detection, attribute prediction, relationship detection, and so on. 
+
+5. They wonder how to highlight the explicit reasoning in vqa, the explicit reasoning is that the logic chain of vqa reasoning is traceable. They proposed the Ahab model [[27]](#27). The model map the question and vision to a KB query, which is the request of knowlege graph, so that it can reach all the konwleges. Besides the reasoning is traceable, it can get a search path in the knowlege graph while query. 
+
+6. The visual dialog is a sub-field of vqa, which have multiple rounds of dialogue. In order to humanized the answer, they apply a GAN network [[26]](#26) to encourage the vqa model generate more humanization answer, which accord with the real human talks.
+
+7. The research on vision-image have got a great improve, But for the reality interactive, the multimodal learning have a long way to go. In order to interaction with real world, the action add to multimodal.
+
+
+
+
+## 3.4 [Jun Yu](https://dblp.uni-trier.de/pers/hd/y/Yu_0002:Jun)  
+MFH (Multimodal Factorized High-order Pooling)[[42]](#42), CVPR 2019
+
+MCAN (Deep Modular Co-Attention Networks)[[21]](#21), CVPR 2019 6.
+
+
+## 3.5 [UNC NLP](http://nlp.cs.unc.edu/publications.html)  
+LXMERT (Learning Cross-Modality Encoder Representations from Transformers) [[20]](#20), EMNLP 2019 8.
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+# chapter 4 Base method and SOTA
+
+## 4.1 **Baseline of vqa**  
+1. BOWIMG : Bag-of-word + image feature
+
+2. FDA : Focused Dynamic Attention model[[32]](#32)
+Motivation:  
+using all the object proposed feature will induce too much noise or overwhelming information irrelevant to question, the FDA can automatically identity and focus on image regions relevant for the current question.
+
+3. MRN : Multimodal Residual Network[[33]](#33)
+
+4. MCB : multimodal compact bilinear pooling for vqa
+	4.1 Motivation:  
+	In this paper[[31]](#31) writing time, the common method of multimodal fusion or multimodal pooling (combining the two vector representation) is following: concatenating vectors, element-wise additive or multiplication. While these method might not fully capture the complex association between the two different modal.
+
+	4.2 Background:  
+	bilinear models have show impressive performance on visual task, however the dimension of bilinear model is very large, in order to reduce it, the compact bilinear model proposed and get the same discriminative power as the full bilinear representation do. 
+	Based on it, paper[[31]](#31) proposed a multimodal compact bilinear pooling for vqa.
+	* why bilinear can do it? Because it provide more infomation, especially the second order information.
+
+	4.3 similar method:  
+	Multimodal Low-rank Bilinear pooling, MLB[[34]](#34)
+	* Utilize a kernel-trick similar method to mapping the high dimension of bilinear matrix to a low dimension space. This mapping in paper named as Rondom Maclaurin (RM) and Tensor Sketch (TS).
+	Multimodal Factorized Bilinear pooling, MFB[[35]](#35)
+	* paper [43](#43) proposed a low-rank bilinear pooling method, it has just one cnn feature stream, then using a low-rank classifier to realize classification. like the SVM, i confuse here, why bilinear SVM can satisfy bilinear features?
+
+5. MLB : multimodal low-rank bilinear pooling for vqa.
+
+
+## 4.2 <span id=att>Promising Model of Attention Machanism</span>
+1. SAN **Stacked Attention Networks for Image Question Answering** [[16]](#16) 2015  
+motivation: vqa required multiple steps of reasoning. So this paper develop a multiple-layer SAN where query an image get attention multiple times to infer the answer progressively.
+
+<div class="imgcap">
+<img src="/assets/vqa/san.png">
+</div>
+
+2. DMN **Dynamic Memory Networks for Visual and Textual Question Answering** [[17]](#17)  2016,march
+
+
+3. RAU recurrent answer unit [[9]](#9) 2016,9  
+a module similar with LSTM, it is a comprisition model.
+
+4. SVA **Structured Attentions for Visual Question Answering**
+proposed a novel neural network to model the attention with a multivariate distribution which considers the arrangements of image regions, which using the CRF graph structure to model image region arrangements.  
+The attention can be formulated as the marginal distribution of each hidden variable in the CRF. Then implement the mean field and loopy Belief Propagation inference algorithm to iteratively refines the attention.
+
+
+
+4. paper[[37]](#37) graph cnn  
+#TODO
+
+5. DCN (dense co-attention network)[[52]](#52)
+It present a novel network architecture for VQA named the dense co-attention network. The core of the network is the dense co-attention layer, which is designed to enable improved fusion of visual and language representations by considering dense symmetric interactions between the input image and question. The layer can be stacked to perform multi-step image-question interactions.
+
+6. BAN (bilinear attention network)[[53]](#53)
+#TODO
+
+
+## 4.3 State-Of-The-Art
+1. MCAN (Deep Modular Co-Attention Networks)[[21]](#21), CVPR 2019 6.
+
+
+2. LXMERT (Learning Cross-Modality Encoder Representations from Transformers) [[20]](#20), EMNLP 2019 8.
+
+
+3. Synergistic Network <**Image-Question-Answer Synergistic Network for Visual Dialog**>[[38]](#38)  
+**Motivation**:  
+previous research ignore the important role of answer.
+
+
+
+## 4.4 **Domestic Research**  
+
+1. paper 《Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering》[[19]](#19) NIPS 2015, by Baidu Research.
+
+mQA model. Muanual valide the answer.
+
+2. paper 《Deep Modular Co-Attention Networks for Visual Question Answering》[[21]](#21) CVPR 2019, by HDU, winner of VQA Challenge 2019.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+## **Reference**  
+<span id=1 > [[1]](https://arxiv.org/abs/1505.00468) VQA: Visual Question Answering, D Parikh (ICCV 2015)</span>  
+<span id=2 > [[2]](https://arxiv.org/abs/1511.05099) Yin and Yang: Balancing and Answering Binary Visual Questions,D Parikh (CVPR 2016) </span>  
+<span id=3 > [[3]](https://arxiv.org/abs/1612.00837) Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering, D Parikh (CVPR2017) </span>  
+<span id=4 > [[4]](https://arxiv.org/abs/1610.01465v4)  Visual Question Answering: Datasets, Algorithms, and Future Challenges , C Kanan</span>  
+<span id=5 > [[5]](https://arxiv.org/abs/1903.00366)  Answer Them All! Toward Universal Visual Question Answering Models, C Kanan </span>  
+<span id=6 > [[6]](http://de.arxiv.org/pdf/1410.0210) A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input,M Malinowski,NIPS2014 </span>  
+<span id=7 > [[7]](http://openaccess.thecvf.com/content_cvpr_2016/papers/Kafle_Answer-Type_Prediction_for_CVPR_2016_paper.pdf) Answer-Type Prediction for Visual Question Answering</span>  
+<span id=8 > [[8]](https://arxiv.org/abs/1706.03762) Attention Is All You Need, google</span>  
+<span id=9 > [[9]](http://export.arxiv.org/abs/1606.03647) Training Recurrent Answering Units with Joint Loss Minimization for VQA</span>  
+<span id=10 > [[10]](https://arxiv.org/abs/1506.00278v1) Visual Madlibs: Fill in the blank Image Generation and Question Answering</span>  
+<span id=11 > [[11]](https://arxiv.org/abs/1703.09684v2) An analysis of visual question answering algorithms ,C Kanan</span>  
+<span id=12 > [[12]](https://arxiv.org/abs/1607.05910) Visual Question Answering: A Survey of Methods and Datasets,Q Wu</span>  
+<span id=13 > [[13]](https://arxiv.org/abs/1904.02794) VQD: Visual Query Detection in Natural Scenes, C Kanan </span>  
+<span id=14 > [[14]](https://arxiv.org/abs/1411.4555) Show and Tell: A Neural Image Caption Generator </span>  
+<span id=15 > [[15]](http://vision.cs.unc.edu/home/publications/babytalk_pami.pdf) Baby Talk: Understanding and Generating Simple Image Descriptions, pami </span>  
+<span id=16 > [[16]](https://arxiv.org/abs/1511.02274) Stacked attention networks for image question answering </span>  
+<span id=17 > [[17]](https://arxiv.org/abs/1603.01417) Dynamic Memory Networks for Visual and Textual Question Answering </span>  
+<span id=18 > [[18]](https://arxiv.org/abs/1612.06890) CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning, Feifei Li</span>  
+<span id=19 > [[19]](https://arxiv.org/abs/1505.05612) Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, Baidu NIPS</span>  
+<span id=20 > [[20]](https://arxiv.org/abs/1908.07490) LXMERT: Learning Cross-Modality Encoder Representations from Transformers, EMNLP 2019 </span>  
+<span id=21 > [[21]](https://arxiv.org/abs/1906.10770) Deep Modular Co-Attention Networks for Visual Question Answering, CVPR 2019, Jun Yu </span>  
+<span id=22 > [[22]](https://arxiv.org/abs/1512.02167) Simple Baseline for Visual Question Answering </span>  
+<span id=23 > [[23]](https://arxiv.org/abs/1511.06973) Ask Me Anything: Free-form Visual Question Answering Based on Knowledge from External Sources </span>  
+<span id=24 > [[24]](https://arxiv.org/abs/1603.02814) Image Captioning and Visual Question Answering Based on Attributes and External Knowledge </span>  
+<span id=25 > [[25]](https://arxiv.org/abs/1612.05386) The VQA-Machine: Learning How to Use Existing Vision Algorithms to Answer New Questions </span>  
+<span id=26 > [[26]](https://arxiv.org/abs/1711.07613) Are You Talking to Me? Reasoned Visual Dialog Generation through Adversarial Learning, CVPR 2017 </span>  
+<span id=27 > [[27]](https://arxiv.org/abs/1511.02570) Explicit Knowledge-based Reasoning for Visual Question Answering </span>  
+<span id=28 > [[28]](https://arxiv.org/abs/1606.07356) Analyzing the Behavior of Visual Question Answering Models, EMNLP 2016, D Parikh </span>  
+<span id=29 > [[29]](https://arxiv.org/abs/1511.02799v2)Deep Compositional Question Answering with Neural Module Networks </span>  
+<span id=30 > [[30]](https://arxiv.org/abs/1506.07285) Ask Me Anything: Dynamic Memory Networks for Natural Language Processing</span>  
+<span id=31 > [[31]](https://arxiv.org/abs/1606.01847) Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding,EMNLP 2016</span>  
+<span id=32 > [[32]](https://arxiv.org/abs/1604.01485) A Focused Dynamic Attention Model for Visual Question Answering</span>  
+<span id=33 > [[33]](https://arxiv.org/abs/1606.01455) Multimodal Residual Learning for Visual QA </span>  
+<span id=34 > [[34]](https://arxiv.org/abs/1610.04325) Hadamard Product for Low-rank Bilinear Pooling </span>  
+<span id=35 > [[35]](https://arxiv.org/abs/1708.01471) Multi-modal Factorized Bilinear Pooling with Co-Attention Learning for Visual Question Answering,ICCV 2017</span>  
+<span id=36 > [[36]](https://arxiv.org/abs/1712.00377) Don't Just Assume; Look and Answer: Overcoming Priors for Visual Question Answering,D Parikh,CVPR18</span>  
+<span id=37 > [[37]](https://arxiv.org/abs/1806.07243) Learning Conditioned Graph Structures for Interpretable Visual Question Answering,NIPS 2018, AimBrain</span>  
+<span id=38 > [[38]](https://arxiv.org/abs/1902.09774) Image-Question-Answer Synergistic Network for Visual Dialog, CVPR 2019</span>  
+<span id=39 > [[39]](https://arxiv.org/abs/1511.05234) Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering,ECCV2015</span>  
+<span id=40 > [[40]](https://arxiv.org/abs/1109.6841) Learning Dependency-Based Compositional Semantics </span>  
+<span id=41 > [[41]](https://arxiv.org/abs/1705.09406) Multimodal Machine Learning: A Survey and Taxonomy </span>  
+<span id=42 > [[42]](https://arxiv.org/abs/1708.03619) Beyond Bilinear: Generalized Multimodal Factorized High-order Pooling for Visual Question Answering, TNNLS 2015</span>  
+<span id=43 > [[43]](https://arxiv.org/abs/1611.05109v1) Low-rank Bilinear Pooling for Fine-Grained Classification </span>  
+<span id=44 > [[44]](https://arxiv.org/abs/1409.0473) Neural Machine Translation by Jointly Learning to Align and Translate </span>  
+<span id=45 > [[45]](http://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/Multi-level-Attention-Networks-for-Visual-Question-Answering.pdf) Multi-level attention networks for visual question answering </span>  
+<span id=46 > [[46]](https://arxiv.org/abs/1708.02071) Structured attentions for visual question answering</span>  
+<span id=47 > [[47]](https://arxiv.org/abs/1606.00061) Hierarchical question-image co-attention for visual question answering, NIPS2016 </span>  
+<span id=48 > [[48]](https://arxiv.org/abs/1803.09845) Neural Baby Talk </span> a method of image captioning.    
+<span id=49 > [[49]](https://arxiv.org/abs/1605.02697) Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, ICCV15</span>  
+<span id=50 > [[50]](https://arxiv.org/abs/1809.03707) Answering Visual What-If Questions: From Actions to Predicted Scene Descriptions,ECCV18</span>  
+<span id=51 > [[51]](https://arxiv.org/abs/1703.03939) Ask Me Even More: Dynamic Memory Tensor Networks (Extended Model) </span>  
+<span id=52 > [[52]](https://arxiv.org/abs/1804.00775) Improved fusion of visual and language representations by dense symmetric co-attention for visual question answering, CVPR18</span>  
+<span id=53 > [[53]](https://arxiv.org/abs/1805.07932) Bilinear attention networks, NIPS18</span>  
+
