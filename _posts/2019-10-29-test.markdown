@@ -1,0 +1,26 @@
+---
+layout: post
+comments: False
+title: ""
+excerpt: ""
+date:   2019-10-29 20:10:49
+mathjax: true
+---
+
+## Chapter 1
+content 1
+
+$$
+\int \!\!\! \int_D f(x,y)\,dx\,dy
+\int \int_D f(x,y)\,dx\,dy
+$$
+
+## Chapter 2
+content 2
+<div class="imgcap" style="border-top:1px solid black; border-bottom: 1px solid black; padding: 10px;">
+<img src="/assets/selfie/selfiebot2.png" style="border:none; width:600px;">
+<div class="thecap" style="text-align:center">Example interaction with the Selfie Bot.</div>
+</div>
+
+
+
