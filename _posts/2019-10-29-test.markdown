@@ -17,10 +17,12 @@ $$
 
 ## Chapter 2
 content 2
-<div class="imgcap" style="border-top:1px solid black; border-bottom: 1px solid black; padding: 10px;">
-<img src="/assets/selfie/selfiebot2.png" style="border:none; width:600px;">
-<div class="thecap" style="text-align:center">Example interaction with the Selfie Bot.</div>
+
+<div class="imgcap">
+<img src="/assets/ml/kernel.png">
+<div class="thecap" style="text-align:center">kernel explain</div>
 </div>
+
 
 
 
