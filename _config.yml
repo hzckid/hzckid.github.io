@@ -1,11 +1,10 @@
 # Site settings
-title: Peter blog
+title: ZCHuang blog
 email: 
 description: "Knowing & Doing."
 baseurl: ""
 url: "http://hzckid.github.io"
-twitter_username: peter 
-github_username:  peter
+github_username:  hzckid
 
 # Build settings
 markdown: kramdown
