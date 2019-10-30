@@ -370,8 +370,8 @@ previous research ignore the important role of answer.
 --------------------------------------------------------------------------------------------------------------------------------------
 
 ## **Reference**  
-<span id=1 > [[1]](https://arxiv.org/abs/1505.00468) VQA: Visual Question Answering, D Parikh (ICCV 2015)</span>  
-<span id=2 > [[2]](https://arxiv.org/abs/1511.05099) Yin and Yang: Balancing and Answering Binary Visual Questions,D Parikh (CVPR 2016) </span>  
+<a id=1 > [[1]](https://arxiv.org/abs/1505.00468) VQA: Visual Question Answering, D Parikh (ICCV 2015)</a>  
+<p id=2 > [[2]](https://arxiv.org/abs/1511.05099) Yin and Yang: Balancing and Answering Binary Visual Questions,D Parikh (CVPR 2016) </p>  
 <span id=3 > [[3]](https://arxiv.org/abs/1612.00837) Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering, D Parikh (CVPR2017) </span>  
 <span id=4 > [[4]](https://arxiv.org/abs/1610.01465v4)  Visual Question Answering: Datasets, Algorithms, and Future Challenges , C Kanan</span>  
 <span id=5 > [[5]](https://arxiv.org/abs/1903.00366)  Answer Them All! Toward Universal Visual Question Answering Models, C Kanan </span>  
