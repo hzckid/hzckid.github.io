@@ -317,7 +317,7 @@ using all the object proposed feature will induce too much noise or overwhelming
 5. MLB : multimodal low-rank bilinear pooling for vqa.
 
 
-## 4.2 <span id=att>Promising Model of Attention Machanism</span>
+## 4.2 Promising Model of Attention Machanism
 1. SAN **Stacked Attention Networks for Image Question Answering** [[16]](#16) 2015  
 motivation: vqa required multiple steps of reasoning. So this paper develop a multiple-layer SAN where query an image get attention multiple times to infer the answer progressively.
 
@@ -372,58 +372,58 @@ previous research ignore the important role of answer.
 ## **Reference**  
 
 <a name=1 > [[1]](https://arxiv.org/abs/1505.00468) VQA: Visual Question Answering, D Parikh (ICCV 2015)</a>  
-<p name=2 > [[2]](https://arxiv.org/abs/1511.05099) Yin and Yang: Balancing and Answering Binary Visual Questions,D Parikh (CVPR 2016) </p>  
-<span name=3 > [[3]](https://arxiv.org/abs/1612.00837) Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering, D Parikh (CVPR2017) </span>  
-<span id=4 > [[4]](https://arxiv.org/abs/1610.01465v4)  Visual Question Answering: Datasets, Algorithms, and Future Challenges , C Kanan</span>  
-<span id=5 > [[5]](https://arxiv.org/abs/1903.00366)  Answer Them All! Toward Universal Visual Question Answering Models, C Kanan </span>  
-<span id=6 > [[6]](http://de.arxiv.org/pdf/1410.0210) A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input,M Malinowski,NIPS2014 </span>  
-<span id=7 > [[7]](http://openaccess.thecvf.com/content_cvpr_2016/papers/Kafle_Answer-Type_Prediction_for_CVPR_2016_paper.pdf) Answer-Type Prediction for Visual Question Answering</span>  
-<span id=8 > [[8]](https://arxiv.org/abs/1706.03762) Attention Is All You Need, google</span>  
-<span id=9 > [[9]](http://export.arxiv.org/abs/1606.03647) Training Recurrent Answering Units with Joint Loss Minimization for VQA</span>  
-<span id=10 > [[10]](https://arxiv.org/abs/1506.00278v1) Visual Madlibs: Fill in the blank Image Generation and Question Answering</span>  
-<span id=11 > [[11]](https://arxiv.org/abs/1703.09684v2) An analysis of visual question answering algorithms ,C Kanan</span>  
-<span id=12 > [[12]](https://arxiv.org/abs/1607.05910) Visual Question Answering: A Survey of Methods and Datasets,Q Wu</span>  
-<span id=13 > [[13]](https://arxiv.org/abs/1904.02794) VQD: Visual Query Detection in Natural Scenes, C Kanan </span>  
-<span id=14 > [[14]](https://arxiv.org/abs/1411.4555) Show and Tell: A Neural Image Caption Generator </span>  
-<span id=15 > [[15]](http://vision.cs.unc.edu/home/publications/babytalk_pami.pdf) Baby Talk: Understanding and Generating Simple Image Descriptions, pami </span>  
-<span id=16 > [[16]](https://arxiv.org/abs/1511.02274) Stacked attention networks for image question answering </span>  
-<span id=17 > [[17]](https://arxiv.org/abs/1603.01417) Dynamic Memory Networks for Visual and Textual Question Answering </span>  
-<span id=18 > [[18]](https://arxiv.org/abs/1612.06890) CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning, Feifei Li</span>  
-<span id=19 > [[19]](https://arxiv.org/abs/1505.05612) Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, Baidu NIPS</span>  
-<span id=20 > [[20]](https://arxiv.org/abs/1908.07490) LXMERT: Learning Cross-Modality Encoder Representations from Transformers, EMNLP 2019 </span>  
-<span id=21 > [[21]](https://arxiv.org/abs/1906.10770) Deep Modular Co-Attention Networks for Visual Question Answering, CVPR 2019, Jun Yu </span>  
-<span id=22 > [[22]](https://arxiv.org/abs/1512.02167) Simple Baseline for Visual Question Answering </span>  
-<span id=23 > [[23]](https://arxiv.org/abs/1511.06973) Ask Me Anything: Free-form Visual Question Answering Based on Knowledge from External Sources </span>  
-<span id=24 > [[24]](https://arxiv.org/abs/1603.02814) Image Captioning and Visual Question Answering Based on Attributes and External Knowledge </span>  
-<span id=25 > [[25]](https://arxiv.org/abs/1612.05386) The VQA-Machine: Learning How to Use Existing Vision Algorithms to Answer New Questions </span>  
-<span id=26 > [[26]](https://arxiv.org/abs/1711.07613) Are You Talking to Me? Reasoned Visual Dialog Generation through Adversarial Learning, CVPR 2017 </span>  
-<span id=27 > [[27]](https://arxiv.org/abs/1511.02570) Explicit Knowledge-based Reasoning for Visual Question Answering </span>  
-<span id=28 > [[28]](https://arxiv.org/abs/1606.07356) Analyzing the Behavior of Visual Question Answering Models, EMNLP 2016, D Parikh </span>  
-<span id=29 > [[29]](https://arxiv.org/abs/1511.02799v2)Deep Compositional Question Answering with Neural Module Networks </span>  
-<span id=30 > [[30]](https://arxiv.org/abs/1506.07285) Ask Me Anything: Dynamic Memory Networks for Natural Language Processing</span>  
-<span id=31 > [[31]](https://arxiv.org/abs/1606.01847) Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding,EMNLP 2016</span>  
-<span id=32 > [[32]](https://arxiv.org/abs/1604.01485) A Focused Dynamic Attention Model for Visual Question Answering</span>  
-<span id=33 > [[33]](https://arxiv.org/abs/1606.01455) Multimodal Residual Learning for Visual QA </span>  
-<span id=34 > [[34]](https://arxiv.org/abs/1610.04325) Hadamard Product for Low-rank Bilinear Pooling </span>  
-<span id=35 > [[35]](https://arxiv.org/abs/1708.01471) Multi-modal Factorized Bilinear Pooling with Co-Attention Learning for Visual Question Answering,ICCV 2017</span>  
-<span id=36 > [[36]](https://arxiv.org/abs/1712.00377) Don't Just Assume; Look and Answer: Overcoming Priors for Visual Question Answering,D Parikh,CVPR18</span>  
-<span id=37 > [[37]](https://arxiv.org/abs/1806.07243) Learning Conditioned Graph Structures for Interpretable Visual Question Answering,NIPS 2018, AimBrain</span>  
-<span id=38 > [[38]](https://arxiv.org/abs/1902.09774) Image-Question-Answer Synergistic Network for Visual Dialog, CVPR 2019</span>  
-<span id=39 > [[39]](https://arxiv.org/abs/1511.05234) Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering,ECCV2015</span>  
-<span id=40 > [[40]](https://arxiv.org/abs/1109.6841) Learning Dependency-Based Compositional Semantics </span>  
-<span id=41 > [[41]](https://arxiv.org/abs/1705.09406) Multimodal Machine Learning: A Survey and Taxonomy </span>  
-<span id=42 > [[42]](https://arxiv.org/abs/1708.03619) Beyond Bilinear: Generalized Multimodal Factorized High-order Pooling for Visual Question Answering, TNNLS 2015</span>  
-<span id=43 > [[43]](https://arxiv.org/abs/1611.05109v1) Low-rank Bilinear Pooling for Fine-Grained Classification </span>  
-<span id=44 > [[44]](https://arxiv.org/abs/1409.0473) Neural Machine Translation by Jointly Learning to Align and Translate </span>  
-<span id=45 > [[45]](http://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/Multi-level-Attention-Networks-for-Visual-Question-Answering.pdf) Multi-level attention networks for visual question answering </span>  
-<span id=46 > [[46]](https://arxiv.org/abs/1708.02071) Structured attentions for visual question answering</span>  
-<span id=47 > [[47]](https://arxiv.org/abs/1606.00061) Hierarchical question-image co-attention for visual question answering, NIPS2016 </span>  
-<span id=48 > [[48]](https://arxiv.org/abs/1803.09845) Neural Baby Talk </span> a method of image captioning.    
-<span id=49 > [[49]](https://arxiv.org/abs/1605.02697) Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, ICCV15</span>  
-<span id=50 > [[50]](https://arxiv.org/abs/1809.03707) Answering Visual What-If Questions: From Actions to Predicted Scene Descriptions,ECCV18</span>  
-<span id=51 > [[51]](https://arxiv.org/abs/1703.03939) Ask Me Even More: Dynamic Memory Tensor Networks (Extended Model) </span>  
-<span id=52 > [[52]](https://arxiv.org/abs/1804.00775) Improved fusion of visual and language representations by dense symmetric co-attention for visual question answering, CVPR18</span>  
-<span id=53 > [[53]](https://arxiv.org/abs/1805.07932) Bilinear attention networks, NIPS18</span>  
+<a name=2 > [[2]](https://arxiv.org/abs/1511.05099) Yin and Yang: Balancing and Answering Binary Visual Questions,D Parikh (CVPR 2016) </a>  
+<a name=3 > [[3]](https://arxiv.org/abs/1612.00837) Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering, D Parikh (CVPR2017) </a>  
+<a name=4 > [[4]](https://arxiv.org/abs/1610.01465v4)  Visual Question Answering: Datasets, Algorithms, and Future Challenges , C Kanan</a>  
+<a name=5 > [[5]](https://arxiv.org/abs/1903.00366)  Answer Them All! Toward Universal Visual Question Answering Models, C Kanan </a>  
+<a name=6 > [[6]](http://de.arxiv.org/pdf/1410.0210) A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input,M Malinowski,NIPS2014 </a>  
+<a name=7 > [[7]](http://openaccess.thecvf.com/content_cvpr_2016/papers/Kafle_Answer-Type_Prediction_for_CVPR_2016_paper.pdf) Answer-Type Prediction for Visual Question Answering</a>  
+<a name=8 > [[8]](https://arxiv.org/abs/1706.03762) Attention Is All You Need, google</a>  
+<a name=9 > [[9]](http://export.arxiv.org/abs/1606.03647) Training Recurrent Answering Units with Joint Loss Minimization for VQA</a>  
+<a name=10 > [[10]](https://arxiv.org/abs/1506.00278v1) Visual Madlibs: Fill in the blank Image Generation and Question Answering</a>  
+<a name=11 > [[11]](https://arxiv.org/abs/1703.09684v2) An analysis of visual question answering algorithms ,C Kanan</a>  
+<a name=12 > [[12]](https://arxiv.org/abs/1607.05910) Visual Question Answering: A Survey of Methods and Datasets,Q Wu</a>  
+<a name=13 > [[13]](https://arxiv.org/abs/1904.02794) VQD: Visual Query Detection in Natural Scenes, C Kanan </a>  
+<a name=14 > [[14]](https://arxiv.org/abs/1411.4555) Show and Tell: A Neural Image Caption Generator </a>  
+<a name=15 > [[15]](http://vision.cs.unc.edu/home/publications/babytalk_pami.pdf) Baby Talk: Understanding and Generating Simple Image Descriptions, pami </a>  
+<a name=16 > [[16]](https://arxiv.org/abs/1511.02274) Stacked attention networks for image question answering </a>  
+<a name=17 > [[17]](https://arxiv.org/abs/1603.01417) Dynamic Memory Networks for Visual and Textual Question Answering </a>  
+<a name=18 > [[18]](https://arxiv.org/abs/1612.06890) CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning, Feifei Li</a>  
+<a name=19 > [[19]](https://arxiv.org/abs/1505.05612) Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question Answering, Baidu NIPS</a>  
+<a name=20 > [[20]](https://arxiv.org/abs/1908.07490) LXMERT: Learning Cross-Modality Encoder Representations from Transformers, EMNLP 2019 </a>  
+<a name=21 > [[21]](https://arxiv.org/abs/1906.10770) Deep Modular Co-Attention Networks for Visual Question Answering, CVPR 2019, Jun Yu </a>  
+<a name=22 > [[22]](https://arxiv.org/abs/1512.02167) Simple Baseline for Visual Question Answering </a>  
+<a name=23 > [[23]](https://arxiv.org/abs/1511.06973) Ask Me Anything: Free-form Visual Question Answering Based on Knowledge from External Sources </a>  
+<a name=24 > [[24]](https://arxiv.org/abs/1603.02814) Image Captioning and Visual Question Answering Based on Attributes and External Knowledge </a>  
+<a name=25 > [[25]](https://arxiv.org/abs/1612.05386) The VQA-Machine: Learning How to Use Existing Vision Algorithms to Answer New Questions </a>  
+<a name=26 > [[26]](https://arxiv.org/abs/1711.07613) Are You Talking to Me? Reasoned Visual Dialog Generation through Adversarial Learning, CVPR 2017 </a>  
+<a name=27 > [[27]](https://arxiv.org/abs/1511.02570) Explicit Knowledge-based Reasoning for Visual Question Answering </a>  
+<a name=28 > [[28]](https://arxiv.org/abs/1606.07356) Analyzing the Behavior of Visual Question Answering Models, EMNLP 2016, D Parikh </a>  
+<a name=29 > [[29]](https://arxiv.org/abs/1511.02799v2)Deep Compositional Question Answering with Neural Module Networks </a>  
+<a name=30 > [[30]](https://arxiv.org/abs/1506.07285) Ask Me Anything: Dynamic Memory Networks for Natural Language Processing</a>  
+<a name=31 > [[31]](https://arxiv.org/abs/1606.01847) Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding,EMNLP 2016</a>  
+<a name=32 > [[32]](https://arxiv.org/abs/1604.01485) A Focused Dynamic Attention Model for Visual Question Answering</a>  
+<a name=33 > [[33]](https://arxiv.org/abs/1606.01455) Multimodal Residual Learning for Visual QA </a>  
+<a name=34 > [[34]](https://arxiv.org/abs/1610.04325) Hadamard Product for Low-rank Bilinear Pooling </a>  
+<a name=35 > [[35]](https://arxiv.org/abs/1708.01471) Multi-modal Factorized Bilinear Pooling with Co-Attention Learning for Visual Question Answering,ICCV 2017</a>  
+<a name=36 > [[36]](https://arxiv.org/abs/1712.00377) Don't Just Assume; Look and Answer: Overcoming Priors for Visual Question Answering,D Parikh,CVPR18</a>  
+<a name=37 > [[37]](https://arxiv.org/abs/1806.07243) Learning Conditioned Graph Structures for Interpretable Visual Question Answering,NIPS 2018, AimBrain</a>  
+<a name=38 > [[38]](https://arxiv.org/abs/1902.09774) Image-Question-Answer Synergistic Network for Visual Dialog, CVPR 2019</a>  
+<a name=39 > [[39]](https://arxiv.org/abs/1511.05234) Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering,ECCV2015</a>  
+<a name=40 > [[40]](https://arxiv.org/abs/1109.6841) Learning Dependency-Based Compositional Semantics </a>  
+<a name=41 > [[41]](https://arxiv.org/abs/1705.09406) Multimodal Machine Learning: A Survey and Taxonomy </a>  
+<a name=42 > [[42]](https://arxiv.org/abs/1708.03619) Beyond Bilinear: Generalized Multimodal Factorized High-order Pooling for Visual Question Answering, TNNLS 2015</a>  
+<a name=43 > [[43]](https://arxiv.org/abs/1611.05109v1) Low-rank Bilinear Pooling for Fine-Grained Classification </a>  
+<a name=44 > [[44]](https://arxiv.org/abs/1409.0473) Neural Machine Translation by Jointly Learning to Align and Translate </a>  
+<a name=45 > [[45]](http://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/Multi-level-Attention-Networks-for-Visual-Question-Answering.pdf) Multi-level attention networks for visual question answering </a>  
+<a name=46 > [[46]](https://arxiv.org/abs/1708.02071) Structured attentions for visual question answering</a>  
+<a name=47 > [[47]](https://arxiv.org/abs/1606.00061) Hierarchical question-image co-attention for visual question answering, NIPS2016 </a>  
+<a name=48 > [[48]](https://arxiv.org/abs/1803.09845) Neural Baby Talk </a> a method of image captioning.    
+<a name=49 > [[49]](https://arxiv.org/abs/1605.02697) Ask Your Neurons: A Neural-based Approach to Answering Questions about Images, ICCV15</a>  
+<a name=50 > [[50]](https://arxiv.org/abs/1809.03707) Answering Visual What-If Questions: From Actions to Predicted Scene Descriptions,ECCV18</a>  
+<a name=51 > [[51]](https://arxiv.org/abs/1703.03939) Ask Me Even More: Dynamic Memory Tensor Networks (Extended Model) </a>  
+<a name=52 > [[52]](https://arxiv.org/abs/1804.00775) Improved fusion of visual and language representations by dense symmetric co-attention for visual question answering, CVPR18</a>  
+<a name=53 > [[53]](https://arxiv.org/abs/1805.07932) Bilinear attention networks, NIPS18</a>  
 
 
 
