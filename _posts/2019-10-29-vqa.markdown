@@ -370,6 +370,7 @@ previous research ignore the important role of answer.
 --------------------------------------------------------------------------------------------------------------------------------------
 
 ## **Reference**  
+<li>
 <a id=1 > [[1]](https://arxiv.org/abs/1505.00468) VQA: Visual Question Answering, D Parikh (ICCV 2015)</a>  
 <p id=2 > [[2]](https://arxiv.org/abs/1511.05099) Yin and Yang: Balancing and Answering Binary Visual Questions,D Parikh (CVPR 2016) </p>  
 <span id=3 > [[3]](https://arxiv.org/abs/1612.00837) Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering, D Parikh (CVPR2017) </span>  
@@ -423,4 +424,4 @@ previous research ignore the important role of answer.
 <span id=51 > [[51]](https://arxiv.org/abs/1703.03939) Ask Me Even More: Dynamic Memory Tensor Networks (Extended Model) </span>  
 <span id=52 > [[52]](https://arxiv.org/abs/1804.00775) Improved fusion of visual and language representations by dense symmetric co-attention for visual question answering, CVPR18</span>  
 <span id=53 > [[53]](https://arxiv.org/abs/1805.07932) Bilinear attention networks, NIPS18</span>  
-
+</li>
