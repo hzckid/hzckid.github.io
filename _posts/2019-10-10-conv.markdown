@@ -139,7 +139,7 @@ As we discuss above, convolution is dot product of signal and convolution kernel
    it is a statistic measure to describe the linearity relationship of two variables.
 
 $$
-\rho(X,Y)=\frac{COV(X,Y)}{\sqrt{Var{(X)\sqrt{Var(Y)}}}} \tag{4.1
+\rho(X,Y)=\frac{COV(X,Y)}{\sqrt{Var{(X)\sqrt{Var(Y)}}}} \tag{4.1}
 $$
 
 
