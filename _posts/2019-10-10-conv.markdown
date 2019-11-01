@@ -108,11 +108,13 @@ $$
   
 
 **Discrete**:  
+
 $$
 \sum_{i}{f(t_i)g(t-t_i)}
 $$
 
 **Continuous**:  
+
 $$
 \int_{-\infty}^{\infty}{f(t)g(x-t)}dt
 $$
@@ -141,8 +143,6 @@ As we discuss above, convolution is dot product of signal and convolution kernel
 $$
 \rho(X,Y)=\frac{COV(X,Y)}{\sqrt{Var{(X)\sqrt{Var(Y)}}}} \tag{4.1}
 $$
-
-
 
 2. Cross-Correlation (abbr. CC) measures correlation of two sequential $x(t)$ and $y(t)$ .
 
@@ -179,7 +179,7 @@ $$
 
   in the CC, with the increasing of $t$, the $t+x$ is following up. But in convolution, the $t$ rise, the $x-t$ is decrease. Thus it is $f(-x)$ here. Besides, it is vital in CNN, because of the real convolution need the $x-t$ is decreasing, it need to rotate the convolution kernel with 180 degree. In fact, the normal process is weighted sum the image and convolution kernel in CNN with increasing strategy. THIS IS *Cross-Correlation* instead of Convolution.  
 
-3. auto-correlation measures relationship of a random signal $x(t)$ at difference time $t_1$ and $t_2$. Define as:
+* auto-correlation measures relationship of a random signal $x(t)$ at difference time $t_1$ and $t_2$. Define as:
 
 $$
 R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(x+t)dt \tag{4.6}
