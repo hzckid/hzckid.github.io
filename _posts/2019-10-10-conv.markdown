@@ -6,22 +6,23 @@ excerpt: "what the convolution between vision field and digital signal processin
 date:   2019-10-10 20:57:26
 mathjax: true
 ---
-# 1. What is convolution?
+## 1. What is convolution?
 The convolution of $f$ and $g$ is written $f*g$, using an asterisk. It is defined as the integral of the product of the two function after one is reversed and shifted. [1]
 
 $$
 (f*g)(t)\triangleq \int_{-\infty}^{+\infty}f(\tau)g(t-\tau)d \tau
 $$
+
 where convolution satisfy the commutativity:
+
 $$
 (f*g)(t)\triangleq \int_{-\infty}^{+\infty}f(t-\tau)g(\tau)d \tau
 $$
-for more detail see [here](https://en.wikipedia.org/wiki/Convolution).
 
 
 
 
-# 2. Convolution in Computer Vision
+## 2. Convolution in Computer Vision
 ## 2.1 Intro the Convolution to CV
 In Gonzalez \<digital image processing\>, one important part is image enhancement, which it is a process to improve the image. Including spatial field method and frequency filed method. The spatial method process the pixel directly, contain pixel algorithm and neighbor algorithm. The pixel neighbor algorithm is widely used. Such as When receive an image, because of physical or other problem, the image exist noisy. In order to eliminate the noisy, it can using the image smoothing, since that the noisy distribution in high frequency and most of image pixel distribute in low frequency. However, the distribution of image edge lies on high frequency, after filter the noisy in image, the edge information will losing. So it is required to recover the edges information, the solving approach is sharpen the image.
 
@@ -29,7 +30,7 @@ As we discuss above, the smoothing and sharpen algorithm is central to  CV. How 
 1. **Image Smoothing**. it can realize with average or integral. 
 2. **Image Sharpening**.  it can realize with difference.
 
-Let us discuss about difference, generally, it can utilize first order or second order to enhance the image edges information. Such as $f(x)$ is pixel fucntion:
+Let us discuss about difference, generally, it can utilize first order or second order to enhance the image edges information. Such as $f(x)$ is pixel function:
 first-order difference:
 $$
 \frac{\partial f}{\partial x} = f(x+1)-f(x)
@@ -40,7 +41,7 @@ $$
 $$
 
 
-## 2.2 Image Mask processing
+### 2.2 Image Mask processing
 The real operation of difference is realizing by mask process, which using the template cover the image, calculating the image and shifting. Suppose input is $f$ and weight is $g$.
 $$
 f=\begin{bmatrix}
@@ -61,26 +62,32 @@ The convolution calculation exemplified as following picture.
 
 <div class="imgcap">
 <img src="/assets/conv/convolution.gif">
-<div class="thecap" style="text-align:center">Image from [post](https://mlnotebook.github.io/post/CNN1/)
+<div class="thecap" style="text-align:center">Image from post [2]
 </div>
 </div>
 
 as we see, this calculation can be formulate as:
+
+
 $$
 (f*g)(1,1)=\sum_{k=0}^{2}\sum_{h=0}^{2}{f(h,k)g(1-h,1-k)}
 $$
 $x=1$ and $y=1$ , then calculate their weight sum, such as :
+
+
 $$
 a_{0,0}b_{1,1}+a_{0,1}b_{1,0}+\cdots+a_{2,2}b_{-1,-1}
 $$
+
+
 this is how the convolution kernel $g$ moving over image $f$. However $g$ is rotating 180 degree.
 
 
 
 ------------------------------------------------------------------------
 
-# 3. Convolution in Digital Singal Processing
-Convolution is origin from DSP, for linearity system, convolution operation can convolute two singal into one. It can shift one signal to another signal that having difference frequence, also, it called signal modulation. In essencial, the convolution is a weight sum process. Convolution is summation, summation is integral, integral is linearity.
+## 3. Convolution in Digital Signal Processing
+Convolution is origin from DSP, for linearity system, convolution operation can convolute two signal into one. It can shift one signal to another signal that having difference frequency, also, it called signal modulation. In essence, the convolution is a weight sum process. Convolution is summation, summation is integral, integral is linearity.
 * why integral is linearity?
 
 if function $f$ is integrable, then scale with a constant $\alpha$ it remain integrable. 
@@ -106,15 +113,15 @@ where variable in $f$ is dumb variable, utilize the $\Sigma$ and $\int$ to elimi
 
 * From the view of linear system, the $g$ is the weight value and $f$ is the input value.
 
-* From the view of digital singal processing, the $f$ is impulse response.
+* From the view of digital signal processing, the $f$ is impulse response.
 
 ------------------------------------------------------------------------
 
-# 4. Convolution is not Convolution
+## 4. Convolution is not Convolution
 
 before we talking about this, we must have a overall know about cross-correlation!
 
-## 4.1 cross-correlation
+### 4.1 cross-correlation
 
 As we discuss above, convolution is dot product of signal and convolution kernel with 180 degree rotation, while most of convolution processing is not rotation operation, so actually, this is not convolution, it is cross-correlation, which both concept come from the digital signal processing.
 
@@ -133,16 +140,16 @@ $$
 * consider two complex function $f(x)$ and $g(x)$, the define of cross-correlation is :
 
 $$
-R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t)g(x+t)dt \tag{3.1}
+R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t)g(x+t)dt \tag{4.1}
 $$
 
 ​		then substitute $x+t=t^*$, so $dt=d(t^*-x)=dt^*$ , it can get:
 $$
-R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t^*-x)g(t^*)dt^* \tag{3.2}
+R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t^*-x)g(t^*)dt^* \tag{4.2}
 $$
-​		(3.1) and (3.2) is totally equally.
+​		(4.1) and (4.2) is totally equally.
 
-## 4.2 cross-correlation and convolution
+### 4.2 cross-correlation and convolution
 
 * compare the cross-correlation and convolution operation.
   $$
@@ -150,7 +157,7 @@ $$
   R_{fg}(x)&=\int_{-\infty}^{+\infty}f(t^*-x)g(t^*)dt^* \\
   &= \int_{-\infty}^{+\infty}f(-(x-t^*))g(t^*)dt^*  \\
   &= f(-x)*g(x)
-  \end{aligned} \tag{3.3}
+  \end{aligned} \tag{4.3}
   $$
   obviously, cross-correlation can be calculate by convolution operation. 
 
@@ -159,28 +166,26 @@ $$
   R_{fg}=f(x) \star g(x) \ne g(x) \star f(x) = R_{gf}
   $$
 
-* How to understand $f(-x)$ in $(3.3)$
+* How to understand $f(-x)$ in $(4.3)$
 
   in the CC, with the increasing of $t$, the $t+x$ is following up. But in convolution, the $t$ rise, the $x-t$ is decrease. Thus it is $f(-x)$ here. Besides, it is vital in CNN, because of the real convolution need the $x-t$ is decreasing, it need to rotate the convolution kernel with 180 degree. In fact, the normal process is weighted sum the image and convolution kernel in CNN with increasing strategy. THIS IS *Cross-Correlation* instead of Convolution.  
 
 3. auto-correlation measures relationship of a random signal $x(t)$ at difference time $t_1$ and $t_2$. Define as:
 
 $$
-R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(x+t)dt \tag{3.4}
+R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(x+t)dt \tag{4.4}
 $$
 or
 $$
-R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(t-x)dt \tag{3.5}
+R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(t-x)dt \tag{4.5}
 $$
 
 
 
 
-## Reference
-
-[1]. https://en.wikipedia.org/wiki/Convolution
-
-
+### Reference
+[1] https://en.wikipedia.org/wiki/Convolution
+[2] https://mlnotebook.github.io/post/CNN1
 
 
 
