@@ -6,6 +6,7 @@ excerpt: "what the convolution between vision field and digital signal processin
 date:   2019-10-10 20:57:26
 mathjax: true
 ---
+
 ## 1. What is convolution?
 The convolution of $f$ and $g$ is written $f*g$, using an asterisk. It is defined as the integral of the product of the two function after one is reversed and shifted. [1]
 
@@ -18,8 +19,6 @@ where convolution satisfy the commutativity:
 $$
 (f*g)(t)\triangleq \int_{-\infty}^{+\infty}f(t-\tau)g(\tau)d \tau
 $$
-
-
 
 
 ## 2. Convolution in Computer Vision
@@ -61,7 +60,7 @@ b_{0,-1} & b_{0,0} & b_{0,1} \\
 b_{1,-1} & b_{1,0} & b_{1,1} \\
 \end{bmatrix}
 $$
-
+  
 their subscript is different, where subscript of $g$ is for convenience of convolution explanation.
 
 The convolution calculation exemplified as following picture.
@@ -91,25 +90,22 @@ this is how the convolution kernel $g$ moving over image $f$. However $g$ is rot
 
 
 
-------------------------------------------------------------------------
 
 ## 3. Convolution in Digital Signal Processing
 Convolution is origin from DSP, for linearity system, convolution operation can convolute two signal into one. It can shift one signal to another signal that having difference frequency, also, it called signal modulation. In essence, the convolution is a weight sum process. Convolution is summation, summation is integral, integral is linearity.
-* why integral is linearity?
-
-if function $f$ is integrable, then scale with a constant $\alpha$ it remain integrable. 
+* why integral is linearity?  
+	if function $f$ is integrable, then scale with a constant $\alpha$ it remain integrable.   
 
 $$
 \alpha\int_{I}{f}{dx} = \int_{I}{\alpha{f}{dx}}
 $$
 
-if function $f$ and $g$ is integrable, then their summation and subtract is integrable.
+if function $f$ and $g$ is integrable, then their summation and subtract is integrable.  
 
 $$
 \int_{I}{({\alpha}f+{\beta}g})dx = \int_{I}{\alpha{f}dx}+\int_{I}{\beta{g}dx}
 $$
-
-* From intuition view, eating function is $f(t)$, digesting function is $g(t)$, such as $t_0$ is 100%, $t_1$ is 75%, $t_2$ is 50% and so on. Both working simultaneously, how many food left in stomach?
+  
 
 **Discrete**:  
 $$
@@ -121,13 +117,14 @@ $$
 \int_{-\infty}^{\infty}{f(t)g(x-t)}dt
 $$
 
-where variable in $f$ is dumb variable, utilize the $\Sigma$ and $\int$ to eliminate it. $t$ in Discrete and $x$ in continuous stand for that in time $t$, how many food left in stomach? 
+where variable in $f$ is dumb variable, utilize the $\Sigma$ and $\int$ to eliminate it. $t$ in Discrete and $x$ in continuous stand for that in time $t$, 
+	  
+* From intuition view, taking eating food as example, eating function is $f(t)$, digesting function is $g(t)$, such as $t_0$ is 100%, $t_1$ is 75%, $t_2$ is 50% and so on. Both working simultaneously, the convolution is how many food left in stomach?  
 
-* From the view of linear system, the $g$ is the weight value and $f$ is the input value.
+* From the view of linear system, the $g$ is the weight value and $f$ is the input value.  
 
-* From the view of digital signal processing, the $f$ is impulse response.
+* From the view of digital signal processing, the $f$ is impulse response.  
 
-------------------------------------------------------------------------
 
 ## 4. Convolution is not Convolution
 
