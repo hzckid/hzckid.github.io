@@ -23,7 +23,7 @@ $$
 
 
 ## 2. Convolution in Computer Vision
-## 2.1 Intro the Convolution to CV
+### 2.1 Intro the Convolution to CV
 In Gonzalez \<digital image processing\>, one important part is image enhancement, which it is a process to improve the image. Including spatial field method and frequency filed method. The spatial method process the pixel directly, contain pixel algorithm and neighbor algorithm. The pixel neighbor algorithm is widely used. Such as When receive an image, because of physical or other problem, the image exist noisy. In order to eliminate the noisy, it can using the image smoothing, since that the noisy distribution in high frequency and most of image pixel distribute in low frequency. However, the distribution of image edge lies on high frequency, after filter the noisy in image, the edge information will losing. So it is required to recover the edges information, the solving approach is sharpen the image.
 
 As we discuss above, the smoothing and sharpen algorithm is central to  CV. How can realize it?
@@ -31,11 +31,15 @@ As we discuss above, the smoothing and sharpen algorithm is central to  CV. How 
 2. **Image Sharpening**.  it can realize with difference.
 
 Let us discuss about difference, generally, it can utilize first order or second order to enhance the image edges information. Such as $f(x)$ is pixel function:
+
 first-order difference:
+
 $$
 \frac{\partial f}{\partial x} = f(x+1)-f(x)
 $$
+
 second-order difference:
+
 $$
 \frac{\partial^2{f}}{\partial x^2} = f(x+1)+f(x-1)-2f(x)
 $$
@@ -43,6 +47,7 @@ $$
 
 ### 2.2 Image Mask processing
 The real operation of difference is realizing by mask process, which using the template cover the image, calculating the image and shifting. Suppose input is $f$ and weight is $g$.
+
 $$
 f=\begin{bmatrix}
 a_{0,0} & a_{0,1} & a_{0,2} \\
@@ -56,6 +61,7 @@ b_{0,-1} & b_{0,0} & b_{0,1} \\
 b_{1,-1} & b_{1,0} & b_{1,1} \\
 \end{bmatrix}
 $$
+
 their subscript is different, where subscript of $g$ is for convenience of convolution explanation.
 
 The convolution calculation exemplified as following picture.
@@ -72,6 +78,7 @@ as we see, this calculation can be formulate as:
 $$
 (f*g)(1,1)=\sum_{k=0}^{2}\sum_{h=0}^{2}{f(h,k)g(1-h,1-k)}
 $$
+
 $x=1$ and $y=1$ , then calculate their weight sum, such as :
 
 
@@ -91,24 +98,29 @@ Convolution is origin from DSP, for linearity system, convolution operation can 
 * why integral is linearity?
 
 if function $f$ is integrable, then scale with a constant $\alpha$ it remain integrable. 
+
 $$
 \alpha\int_{I}{f}{dx} = \int_{I}{\alpha{f}{dx}}
 $$
+
 if function $f$ and $g$ is integrable, then their summation and subtract is integrable.
+
 $$
 \int_{I}{({\alpha}f+{\beta}g})dx = \int_{I}{\alpha{f}dx}+\int_{I}{\beta{g}dx}
 $$
 
 * From intuition view, eating function is $f(t)$, digesting function is $g(t)$, such as $t_0$ is 100%, $t_1$ is 75%, $t_2$ is 50% and so on. Both working simultaneously, how many food left in stomach?
 
-Discrete
+**Discrete**:  
 $$
 \sum_{i}{f(t_i)g(t-t_i)}
 $$
-Continuous
+
+**Continuous**:  
 $$
 \int_{-\infty}^{\infty}{f(t)g(x-t)}dt
 $$
+
 where variable in $f$ is dumb variable, utilize the $\Sigma$ and $\int$ to eliminate it. $t$ in Discrete and $x$ in continuous stand for that in time $t$, how many food left in stomach? 
 
 * From the view of linear system, the $g$ is the weight value and $f$ is the input value.
@@ -130,7 +142,7 @@ As we discuss above, convolution is dot product of signal and convolution kernel
    it is a statistic measure to describe the linearity relationship of two variables.
 
 $$
-\rho(X,Y)=\frac{COV(X,Y)}{\sqrt{Var{(X)\sqrt{Var(Y)}}}}
+\rho(X,Y)=\frac{COV(X,Y)}{\sqrt{Var{(X)\sqrt{Var(Y)}}}} \tag{4.1
 $$
 
 
@@ -140,14 +152,14 @@ $$
 * consider two complex function $f(x)$ and $g(x)$, the define of cross-correlation is :
 
 $$
-R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t)g(x+t)dt \tag{4.1}
+R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t)g(x+t)dt \tag{4.2}
 $$
 
 ​		then substitute $x+t=t^*$, so $dt=d(t^*-x)=dt^*$ , it can get:
 $$
-R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t^*-x)g(t^*)dt^* \tag{4.2}
+R_{fg}(x)=f(x) \star g(x)=\int_{-\infty}^{+\infty}f(t^*-x)g(t^*)dt^* \tag{4.3}
 $$
-​		(4.1) and (4.2) is totally equally.
+​		(4.2) and (4.3) is totally equally.
 
 ### 4.2 cross-correlation and convolution
 
@@ -157,35 +169,35 @@ $$
   R_{fg}(x)&=\int_{-\infty}^{+\infty}f(t^*-x)g(t^*)dt^* \\
   &= \int_{-\infty}^{+\infty}f(-(x-t^*))g(t^*)dt^*  \\
   &= f(-x)*g(x)
-  \end{aligned} \tag{4.3}
+  \end{aligned} \tag{4.4}
   $$
   obviously, cross-correlation can be calculate by convolution operation. 
 
-* the cross-correlation is not satisfied the commutative law.
+* the cross-correlation is not satisfied the commutative law.  
   $$
-  R_{fg}=f(x) \star g(x) \ne g(x) \star f(x) = R_{gf}
+  R_{fg}=f(x) \star g(x) \ne g(x) \star f(x) = R_{gf} \tag{4.5}
   $$
 
-* How to understand $f(-x)$ in $(4.3)$
+* How to understand $f(-x)$ in $(4.4)$
 
   in the CC, with the increasing of $t$, the $t+x$ is following up. But in convolution, the $t$ rise, the $x-t$ is decrease. Thus it is $f(-x)$ here. Besides, it is vital in CNN, because of the real convolution need the $x-t$ is decreasing, it need to rotate the convolution kernel with 180 degree. In fact, the normal process is weighted sum the image and convolution kernel in CNN with increasing strategy. THIS IS *Cross-Correlation* instead of Convolution.  
 
 3. auto-correlation measures relationship of a random signal $x(t)$ at difference time $t_1$ and $t_2$. Define as:
 
 $$
-R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(x+t)dt \tag{4.4}
+R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(x+t)dt \tag{4.6}
 $$
 or
 $$
-R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(t-x)dt \tag{4.5}
+R_{ff}=f(x) \star f(x)=\int_{-\infty}^{+\infty}f(t)f(t-x)dt \tag{4.7}
 $$
 
 
 
 
 ### Reference
-[1] https://en.wikipedia.org/wiki/Convolution
-[2] https://mlnotebook.github.io/post/CNN1
+[1] https://en.wikipedia.org/wiki/Convolution  
+[2] https://mlnotebook.github.io/post/CNN1  
 
 
 
