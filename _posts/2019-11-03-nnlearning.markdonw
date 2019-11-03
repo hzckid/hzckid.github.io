@@ -38,7 +38,7 @@ when training is convergence,  $\Delta \mathbf{w}=0$ , where $\mathbf{C}$ is the
 
 #### 1.2 Oja's Rule
 
-Oja's rule is another synaptic weight learning rule, it will offer a negative feedback to make training convergence. The Oja's learning formulaic expression is following [2]:
+Oja's rule is another synaptic weight learning rule, it will offer a negative feedback to make training convergence. The Oja's learning formulaic expression is following:
 $$
 \Delta{\mathbf{w}}= \alpha(\mathbf{x}^T\mathbf{y} - \mathbf{y}^T\mathbf{y}\mathbf{w})
 $$
@@ -51,20 +51,15 @@ Aim at $\Delta{\mathbf{w}}=0$, so the $\mathbf{C}\mathbf{w}=\lambda \mathbf{w}$,
 
 
 
-
 ### 2. Supervised Learning
+
 #### 2.1 Radial Basis Function
-
 TODO
-
 
 
 #### 2.2 Backpropagation
-
 TODO
-
 
 
 #### Reference
 [1] [synaptic weight](https://en.wikipedia.org/wiki/Synaptic_weight)
-[2] https://www.zhihu.com/question/26564573
