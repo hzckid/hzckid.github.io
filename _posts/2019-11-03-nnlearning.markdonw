@@ -7,13 +7,17 @@ date:   2019-11-03 14:34:03
 mathjax: true
 ---
 
-## Synaptic weight
+# Synaptic weight
+
 In neuroscience and computer science, synaptic weight refers to the strength or amplitude of a connection between two nodes, corresponding in biology to the amount of influence the firing of one neuron has on another. The term is typically used in artificial and biological neural network research.[1]  
 Learning how the weight changing is central to neural network.
 
-## Neural Network Learning Rule
+# Neural Network Learning Rule
+
 ### 1. Unsupervised learning
+
 #### 1.1 Hebb's Rule
+
 Hebb's based on Hebbian theory, which is a neuroscientific theory claiming that an increase in synaptic efficacy arises from a pre-synaptic cell's repeated and persistent stimulation of a post-synaptic cell. that is to say with the repeated and persistent stimulation between two neuron, the synaptic efficacy will increasing.
 
 The Hebb rule can be formula as:
