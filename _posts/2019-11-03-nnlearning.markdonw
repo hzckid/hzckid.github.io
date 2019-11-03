@@ -1,0 +1,70 @@
+---
+layout: post
+comments: False
+title: "Neural Network Learning Rule"
+excerpt: "nn learning rule"
+date:   2019-11-03 14:34:03
+mathjax: true
+---
+
+## Synaptic weight
+In neuroscience and computer science, synaptic weight refers to the strength or amplitude of a connection between two nodes, corresponding in biology to the amount of influence the firing of one neuron has on another. The term is typically used in artificial and biological neural network research.[1]  
+Learning how the weight changing is central to neural network.
+
+## Neural Network Learning Rule
+### 1. Unsupervised learning
+#### 1.1 Hebb's Rule
+Hebb's based on Hebbian theory, which is a neuroscientific theory claiming that an increase in synaptic efficacy arises from a pre-synaptic cell's repeated and persistent stimulation of a post-synaptic cell. that is to say with the repeated and persistent stimulation between two neuron, the synaptic efficacy will increasing.
+
+The Hebb rule can be formula as:
+$$
+w_{ij}=x_i y_j
+$$
+we talking about the case of linear neuron:
+$$
+y_j = \sum_i{x_i w_{ij} } \quad or \quad \bold{y} = \bold{x} \bold{w}
+$$
+the synaptic weight $w_{ij}$ is the weight of the synaptic weight from input neuron $x_i$ to output neuron $y_j$. Since the synaptic weight relative with the input neuron and output neuron, thus the rectified synaptic weight formulaic description is:
+$$
+\Delta{w_{ij}}=\alpha x_i y_j \quad or \quad \Delta{\bold{w}}=\alpha \bold{x}^T \bold{y}
+$$
+where $\alpha$ is learning rate, if the pre-neuron $x_i$  and post-neuron $y_j$ are activated simultaneously, the weight $w_{ij}$ would be positive, otherwise if pre-neuron is active but post-neuron is suppressed. However, this rule is not stable, the $\Delta{\bold{w}}$ will not convergence to an stable value, i.e., $\Delta{\bold{w}} \ne 0$. Let us exploit why.
+$$
+\Delta{\bold{w}} = \alpha \bold{x}^T\bold{y}=\alpha \bold{x}^T \bold{x}\bold{w}=\bold{C} \bold{w}
+$$
+when training is convergence,  $\Delta \bold{w}=0$ , where $\bold{C}$ is the covariance matrix, the essential of Hebb rule is to find the resolver of $\bold{C}\bold{w}=0$, but this formula is not always existing resolver, result in the training of Hebb rule is not always convergence.
+
+
+
+#### 1.2 Oja's Rule
+
+Oja's rule is another synaptic weight learning rule, it will offer a negative feedback to make training convergence. The Oja's learning formulaic expression is following [2]:
+$$
+\Delta{\bold{w}}= \alpha(\bold{x}^T\bold{y} - \bold{y}^T\bold{y}\bold{w})
+$$
+We care about the linear case, this formulation will transform as:
+$$
+\Delta{\bold{w}}=\alpha(\bold{x}^T\bold{y} - \bold{y}^T\bold{y}\bold{w})=\alpha(\bold{x}^T\bold{x}\bold{w}-\bold{w}^T\bold{x}^T \bold{x}\bold{w} \bold{w}) \\
+=\alpha(\bold{C}\bold{w}-\bold{w}^T\bold{C}\bold{w}\bold{w})=\alpha({\bold{C}}\bold{w}-\lambda \bold{w})
+$$
+Aim at $\Delta{\bold{w}}=0$, so the $\bold{C}\bold{w}=\lambda \bold{w}$, the $\lambda=\bold{x}^T \bold{C} \bold{x}$. The process of training Oja' rule transform to get the eigenvector. In some aspect, this process is also the PCA process.
+
+
+
+
+### 2. Supervised Learning
+#### 2.1 Radial Basis Function
+
+TODO
+
+
+
+#### 2.2 Backpropagation
+
+TODO
+
+
+
+#### Reference
+[1] [synaptic weight](https://en.wikipedia.org/wiki/Synaptic_weight)
+[2] https://www.zhihu.com/question/26564573
